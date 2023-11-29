@@ -23,11 +23,11 @@ extraction_date = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 db_filename = f"product_raw_data_{datetime.now().strftime('%Y-%m-%d')}.db"
 
 # CSV File name and Header
-csv_filename = f"product_data_{datetime.now().strftime('%Y-%m-%d')}.csv"
+csv_filename = f"product_raw_data_{datetime.now().strftime('%Y-%m-%d')}.csv"
 csv_header = ["product_name", "current_stock", "shop_name", "shop_id", "brand",
                     "unique_item_id", "sold_per_month", "historical_sold", "liked_count",
                     "variation_type", "variation", "current_price", "min_price", "max_price",
-                    "lowest_price_guarantee", "current_discount", "rating_star", "shopee_verified",
+                    "lowest_price_guarantee", "current_discount_percentage", "rating_star", "shopee_verified",
                     "official_shop", "cc_installment", "none_cc_installment", "preferred_seller",
                     "shop_location", "shop_rating", "cod", "extraction_date"]
 
@@ -121,7 +121,7 @@ with sqlite3.connect(db_filename) as conn:
                 "min_price" INTEGER,
                 "max_price" INTEGER,
                 "lowest_price_guarantee" TEXT,
-                "current_discount" INTEGER,
+                "current_discount_percentage" INTEGER,
                 "rating_star" INTEGER,
                 "shopee_verified" TEXT,
                 "official_shop" TEXT,
@@ -148,7 +148,7 @@ def save_data_db(data, sqlite_filename):
                     ("product_name", "current_stock", "shop_name", "shop_id", "brand", 
                     "unique_item_id", "sold_per_month", "historical_sold", "liked_count", 
                     "variation_type", "variation", "current_price", "min_price", "max_price", 
-                    "lowest_price_guarantee", "current_discount", "rating_star", "shopee_verified", 
+                    "lowest_price_guarantee", "current_discount_percentage", "rating_star", "shopee_verified", 
                     "official_shop", "cc_installment", "none_cc_installment", "preferred_seller", 
                     "shop_location", "shop_rating", "cod", "extraction_date")
                     VALUES 
